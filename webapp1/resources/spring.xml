@@ -11,17 +11,31 @@
        http://www.springframework.org/schema/aop/spring-aop.xsd">
        
        <aop:config>
-       	<aop:aspect id="logging" ref="log">
-       		<aop:pointcut expression="execution(* com.examples.aop.Car.drive())" id="pc"/>
-       		<aop:before method="logDriveBefore" pointcut-ref="pc"/>
-       		<aop:after method="logDriveAfter" pointcut-ref="pc"/>
-       		<aop:after-returning method="logDriveReturn" pointcut-ref="pc"/>
-       		
-       		<aop:after-throwing method="logThrottleException" pointcut="execution(* com.examples.aop.Car.throttle(*))"/>
-       	</aop:aspect>
+	       	<aop:aspect ref="logger">
+	       		<aop:pointcut expression="execution(* com.examples.aop.Car.drive())" id="pc"/>
+	       		<aop:before method="logDriveBefore" pointcut-ref="pc"/>
+	       		<aop:after method="logDriveAfter" pointcut-ref="pc"/>
+	       		<aop:after-returning method="logDriveReturn" pointcut-ref="pc"/>
+	       		
+	       		<aop:after-throwing method="logThrottleException" pointcut="execution(* com.examples.aop.Car.throttle(*))"/>
+	       	</aop:aspect>
+       	
+	       	<aop:aspect ref="security">
+	       		<aop:after method="validate" pointcut="execution(* com.examples.aop.Car.lock(int, int)) and args(doors, windows)"
+	       			arg-names="doors, windows"/>
+	       	</aop:aspect>
+	       	
+	       	<aop:aspect ref="transaction">
+	       		<aop:around method="check" pointcut="execution(* com.examples.aop.Car.slow(int)) and args(force)" 
+	       		arg-names="force"/>
+	       	</aop:aspect>
        </aop:config>
        
-       <bean id="log" class="com.examples.aop.LoggingAspect"></bean>
+       <bean id="transaction" class="com.examples.aop.TransactionAspect"/>
+              
+       <bean id="security" class="com.examples.aop.SecurityAspect"></bean>
+       
+       <bean id="logger" class="com.examples.aop.LoggingAspect"></bean>
        
        <bean id="car" class="com.examples.aop.Car">
        	<property name="color" value="red"/>

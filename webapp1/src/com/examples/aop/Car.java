@@ -23,4 +23,12 @@ public class Car {
 			System.out.println("Normal operation");
 		}
 	}
+	
+	public void lock(int doors, int windows) {
+		System.out.println("Locking the car ...");
+	}
+	
+	public void slow(int force) {
+		System.out.println("Car slowing down ..");
+	}
 }
