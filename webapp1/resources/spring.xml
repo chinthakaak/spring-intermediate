@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop = "http://www.springframework.org/schema/aop"
+       xsi:schemaLocation = "http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+       
+       <aop:config>
+       	<aop:aspect id="logging" ref="log">
+       		<aop:pointcut expression="execution(* com.examples.aop.Car.drive())" id="pc"/>
+       		<aop:before method="logDriveBefore" pointcut-ref="pc"/>
+       		<aop:after method="logDriveAfter" pointcut-ref="pc"/>
+       		<aop:after-returning method="logDriveReturn" pointcut-ref="pc"/>
+       	</aop:aspect>
+       </aop:config>
+       
+       <bean id="log" class="com.examples.aop.LoggingAspect"></bean>
+       
+       <bean id="car" class="com.examples.aop.Car">
+       	<property name="color" value="red"/>
+       </bean>
+ </beans>
+ 
