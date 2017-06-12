@@ -1,10 +1,18 @@
 package com.examples.trx.dao;
 
-import org.springframework.jdbc.core.support.JdbcDaoSupport;
-import org.springframework.stereotype.Component;
+import javax.sql.DataSource;
 
-@Component
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class PaymentDao extends JdbcDaoSupport{
+	@Autowired
+	public void setDSource(DataSource dataSource) {
+		setDataSource(dataSource);
+	}
+	
 	public void updateAccount(int accountNumber, int amount) {
 
 	}

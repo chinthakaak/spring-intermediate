@@ -7,7 +7,6 @@ import com.examples.trx.dao.PaymentDao;
 
 @Service
 public class PaymentServiceImpl extends PaymentService {
-	
 	@Autowired
 	private PaymentDao paymentDao;
 	
