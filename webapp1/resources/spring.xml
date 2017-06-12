@@ -26,7 +26,7 @@
 	       	</aop:aspect>
 	       	
 	       	<aop:aspect ref="transaction">
-	       		<aop:around method="check" pointcut="execution(* com.examples.aop.Car.slow(int)) and args(force)" 
+	       		<aop:around method="check" pointcut="execution(* com.examples.aop.Vehicle.slow(int)) and args(force)" 
 	       		arg-names="force"/>
 	       	</aop:aspect>
        </aop:config>
