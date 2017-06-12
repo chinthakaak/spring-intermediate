@@ -28,7 +28,9 @@ public class Car {
 		System.out.println("Locking the car ...");
 	}
 	
-	public void slow(int force) {
+	public int slow(int force) {
 		System.out.println("Car slowing down ..");
+		
+		return --force;
 	}
 }

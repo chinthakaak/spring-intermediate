@@ -17,6 +17,6 @@ public class Main {
 			// parameter passing - security
 //			car.lock(4, 4);
 			
-			car.slow(10);
+			System.out.println(car.slow(1));
 	}
 }
