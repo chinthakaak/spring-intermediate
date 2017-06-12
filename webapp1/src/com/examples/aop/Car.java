@@ -14,4 +14,13 @@ public class Car {
 	public void drive() {
 		System.out.println("Driving ...");
 	}
+	
+	public void throttle(int amount) throws Exception{
+		if (amount > 100) {
+			System.out.println("High throttling..");
+			throw new Exception();
+		} else {
+			System.out.println("Normal operation");
+		}
+	}
 }

@@ -16,6 +16,8 @@
        		<aop:before method="logDriveBefore" pointcut-ref="pc"/>
        		<aop:after method="logDriveAfter" pointcut-ref="pc"/>
        		<aop:after-returning method="logDriveReturn" pointcut-ref="pc"/>
+       		
+       		<aop:after-throwing method="logThrottleException" pointcut="execution(* com.examples.aop.Car.throttle(*))"/>
        	</aop:aspect>
        </aop:config>
        
