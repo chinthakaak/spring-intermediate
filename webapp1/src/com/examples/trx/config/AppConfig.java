@@ -12,6 +12,11 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 public class AppConfig {	
 	@Bean
 	public DataSource dataSource() {
-		return new DriverManagerDataSource();
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+		dataSource.setUsername("company");
+		dataSource.setPassword("password");
+		dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+		return dataSource;
 	}
 }
