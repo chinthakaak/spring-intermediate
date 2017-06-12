@@ -1,6 +1,6 @@
 package com.examples.aop;
 
-public class Car {
+public class Car implements Vehicle{
 	private String color;
 
 	public String getColor() {

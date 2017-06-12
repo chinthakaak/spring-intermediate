@@ -6,17 +6,17 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Main {
 	public static void main(String[] args) throws Exception {
 			ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-			Car car = context.getBean("car", Car.class);
-			//System.out.println(car.getColor());
+			Vehicle car = context.getBean("car", Vehicle.class);
+			System.out.println(car.getColor());
 			// After before after-return advices - logging
-			//car.drive();
+			car.drive();
 			
 			// after-throwing logging
-			//car.throttle(101);
+//			car.throttle(101);
 			
 			// parameter passing - security
-//			car.lock(4, 4);
+			car.lock(4, 4);
 			
-			System.out.println(car.slow(1));
+			System.out.println(car.slow(91));
 	}
 }
