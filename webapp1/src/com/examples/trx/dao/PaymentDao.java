@@ -14,7 +14,7 @@ public class PaymentDao extends JdbcDaoSupport{
 	}
 	
 	public void updateAccount(int accountNumber, int amount) {
-
+//		getJdbcTemplate().query(psc, rowMapper)
 	}
 	
 	public void createAccountChangeEntry(int accountNumber, String flag, int amount) {
