@@ -11,6 +11,6 @@ public class TrxMain {
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		
 		PaymentService paymentService = context.getBean(PaymentService.class);
-		paymentService.pay(1, 2, 100);
+		paymentService.pay(1, 2, 190);
 	}	
 }

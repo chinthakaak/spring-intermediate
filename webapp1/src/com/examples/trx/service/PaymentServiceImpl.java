@@ -10,14 +10,17 @@ public class PaymentServiceImpl extends PaymentService {
 	@Autowired
 	private PaymentDao paymentDao;
 	
-	public void pay(int payerAccountNumber, int payeeAccountnumber, int amount) {
-		// updateAccount(payeeAccountNumber, -amount)
-		 paymentDao.updateAccount(1, 10);
-		
-		// updateAccount(payerAccountNumber, +amount)
-		
-		// createAccountChangeEntry(payeeAccountNumber,-,amount);
-		
-		// createAccountChangeEntry(payerAccountNumber,+,amount);			
+	public void pay(int payerAccountNumber, int payeeAccountNumber, int amount) {
+		// updateAccount(payerAccountNumber, -amount)
+		 paymentDao.updateAccount(payerAccountNumber, -amount);
+
+//		// updateAccount(payeeAccountNumber, +amount)
+		 paymentDao.updateAccount(payeeAccountNumber, amount);		
+//		
+//		// createAccountChangeEntry(payerAccountNumber,+,amount);
+		 paymentDao.createAccountChangeEntry(payerAccountNumber, "-", amount);
+//		
+//		// createAccountChangeEntry(payeeAccountNumber,-,amount);
+		 paymentDao.createAccountChangeEntry(payeeAccountNumber, "+", amount);
 	}
 }
