@@ -1,18 +1,19 @@
-package com.examples.trx;
+package com.examples.trx.service;
 
+import static org.junit.Assert.*;
+
+import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.examples.trx.config.AppConfig;
-import com.examples.trx.service.PaymentService;
 
-public class TrxMain {
-	public static void main(String[] args) {		
+public class PaymentServiceImplTest {
+	@Test
+	public void payWithoutSpringTransaction() {
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		
 		PaymentService paymentService = context.getBean(PaymentService.class);
-		paymentService.pay(1, 2, 250);
-//		paymentService.pay(2, 1, 250);
-
-	}	
+		paymentService.payJdbc(1, 2, 250);		
+	}
 }

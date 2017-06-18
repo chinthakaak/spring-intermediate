@@ -1,5 +1,8 @@
 package com.examples.trx.service;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +25,10 @@ public class PaymentServiceImpl extends PaymentService {
 //		
 //		// createAccountChangeEntry(payeeAccountNumber,-,amount);
 		 paymentDao.createAccountChangeEntry(payeeAccountNumber, "+", amount);
+	}
+	
+	public void payJdbc(int payerAccountNumber, int payeeAccountNumber, int amount) {			
+			paymentDao.updateAccountsAndCreateAccountChangeEntryJdbc(payerAccountNumber, payeeAccountNumber, amount);
+						
 	}
 }
