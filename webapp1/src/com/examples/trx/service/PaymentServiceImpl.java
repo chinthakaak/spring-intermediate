@@ -33,10 +33,10 @@ public class PaymentServiceImpl extends PaymentService {
 	// For declarative transaction management
 	@Autowired
 	private PaymentDaoDeclarativeTrxMgt paymentDaoDeclarativeTrxMgt;
-	
-	@Transactional
+
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void payWithDeclarativeTrxMgt(int payerAccountNumber, int payeeAccountNumber, int amount) {
-		try {
+
 			// updateAccount(payerAccountNumber, -amount)
 			paymentDaoDeclarativeTrxMgt.updateAccount(payerAccountNumber, -amount);
 
@@ -47,10 +47,7 @@ public class PaymentServiceImpl extends PaymentService {
 			paymentDaoDeclarativeTrxMgt.createAccountChangeEntry(payerAccountNumber, "-", amount);
 //			
 //			// createAccountChangeEntry(payeeAccountNumber,-,amount);
-			paymentDaoDeclarativeTrxMgt.createAccountChangeEntry(payeeAccountNumber, "+", amount);				
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
+			paymentDaoDeclarativeTrxMgt.createAccountChangeEntry(payeeAccountNumber, "+", amount);
 	
 	}
 	

@@ -8,9 +8,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @ComponentScan(basePackages={"com.examples.trx.dao", "com.examples.trx.service"})
+@EnableTransactionManagement
 public class AppConfig {	
 	@Bean
 	public DataSource dataSource() {
@@ -23,13 +25,8 @@ public class AppConfig {
 	}
 	
 	@Bean
-	public PlatformTransactionManager transactionManagerProgramatic() {
+	public PlatformTransactionManager transactionManager() {
 		PlatformTransactionManager transactionManager = new DataSourceTransactionManager(dataSource());
 		return transactionManager;
 	}
-	
-//	@Bean
-//	public DataSourceTransactionManager transactionManagerDeclarative() {
-//		return new DataSourceTransactionManager(dataSource());
-//	}
 }
