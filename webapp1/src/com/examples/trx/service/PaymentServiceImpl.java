@@ -34,7 +34,7 @@ public class PaymentServiceImpl extends PaymentService {
 	@Autowired
 	private PaymentDaoDeclarativeTrxMgt paymentDaoDeclarativeTrxMgt;
 
-	@Transactional(propagation = Propagation.REQUIRED)
+	@Transactional(propagation = Propagation.REQUIRED) // Propagation.REQUIRED is the default of @Transactional
 	public void payWithDeclarativeTrxMgt(int payerAccountNumber, int payeeAccountNumber, int amount) {
 
 			// updateAccount(payerAccountNumber, -amount)
